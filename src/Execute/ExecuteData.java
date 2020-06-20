@@ -14,7 +14,7 @@ public class ExecuteData {
     public static void main(String[] args) {
         execPsn = new ExecutePsn();
         execDok = new ExecuteDok();
-        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis;
+        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis,Status,Bantu;
         int Umur;
         while(!KELUAR){
             System.out.println("**********************************************");
@@ -45,17 +45,19 @@ public class ExecuteData {
                 case 2 :{
                     System.out.println("Anda memilih Input Data Pasien baru ");
                     scanner = new Scanner(System.in);
-                    System.out.print("Masukkan Id Pasien                 : ");
+                    System.out.print("Masukkan Id Pasien    : ");
                     Id_Pasien = scanner.nextLine();
-                    System.out.print("Masukkan Nama                      : ");
+                    System.out.print("Masukkan Nama         : ");
                     Nama = scanner.nextLine();
-                    System.out.print("Masukkan Alamat                    : ");
+                    System.out.print("Masukkan Alamat       : ");
                     Alamat = scanner.nextLine();
-                    System.out.print("Masukkan Umur                      : ");
+                    System.out.print("Masukkan Umur         : ");
                     Umur = scanner.nextInt();
-                    System.out.print("Masukkan Status                    : ");
-                    String Status = scanner.nextLine();
-                    Pasien newPas = new Pasien(Id_Pasien, Nama,Umur,Alamat,Status);
+                    System.out.print("");
+                    Bantu = scanner.nextLine();
+                    System.out.print("Masukkan Status       : ");
+                    Status = scanner.nextLine();
+                    Pasien newPas = new Pasien(Id_Pasien, Nama, Umur, Alamat, Status);
                     int hasil = execPsn.insertPas(newPas);
                     System.out.println("Data tersimpan = " + hasil);
                     break;
@@ -71,9 +73,11 @@ public class ExecuteData {
                     Alamat = scanner.nextLine();
                     System.out.print("Masukkan umur baru                  :");
                     Umur = scanner.nextInt();
-                    System.out.print("Masukkan status baru                :");
-                    String Status = scanner.nextLine();
-                    Pasien newPas = new Pasien(Id_Pasien, Nama, Umur, Alamat,Status);
+                    System.out.print("");
+                    Bantu = scanner.nextLine();
+                    System.out.print("Masukkan status baru                : ");
+                    Status = scanner.nextLine();
+                    Pasien newPas = new Pasien(Id_Pasien, Nama, Umur, Alamat, Status);
                     int hasil = execPsn.updatePas(newPas);
                     System.out.println("Data diubah = "+ hasil);
                     break;
@@ -108,8 +112,11 @@ public class ExecuteData {
                     Spesialis = scanner.nextLine();
                     System.out.print("Masukkan Umur         : ");
                     Umur = scanner.nextInt();
+                    System.out.print("");
+                    Bantu = scanner.nextLine();
                     System.out.print("Masukkan Alamat       : ");
                     Alamat = scanner.nextLine();
+                    System.out.println("============================================");
                     Dokter newDok = new Dokter(Id_Dokter, Nama,Spesialis,Umur,Alamat);
                     int hasil = execDok.insertDok(newDok);
                     System.out.println("Data tersimpan = " + hasil);
@@ -118,15 +125,17 @@ public class ExecuteData {
                 case 7 :{
                     System.out.println("Anda memilih Ubah data Dokter");
                     scanner = new Scanner(System.in);
-                    System.out.print("Masukkan Id Dokter yang akan diubah : ");
+                    System.out.println("Masukkan Id Dokter yang akan diubah : ");
                     Id_Dokter = scanner.nextLine();
-                    System.out.print("Masukkan nama baru                  : ");
+                    System.out.println("Masukkan nama baru                  : ");
                     Nama = scanner.nextLine();
-                    System.out.print("Masukkan spesialis baru             : ");
+                    System.out.println("Masukkan spesialis baru             : ");
                     Spesialis = scanner.nextLine();
-                    System.out.print("Masukkan umur baru                  :");
+                    System.out.println("Masukkan umur baru                  :");
                     Umur = scanner.nextInt();
-                    System.out.print("Masukkan alamat baru                :");
+                    System.out.print("");
+                    Bantu = scanner.nextLine();
+                    System.out.println("Masukkan alamat baru                : ");
                     Alamat = scanner.nextLine();
                     Dokter newDok = new Dokter(Id_Dokter, Nama, Spesialis, Umur,Alamat);
                     int hasil = execDok.updateDok(newDok);

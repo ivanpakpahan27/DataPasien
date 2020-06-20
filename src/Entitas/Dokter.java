@@ -9,7 +9,7 @@ public class Dokter {
     private String Spesialis;
     private int Umur;
     private String Alamat;
-
+    
     public Dokter() {
     }
     public Dokter(String Id_Dokter, String Nama, String Spesialis, int Umur, String Alamat) {
@@ -37,7 +37,6 @@ public class Dokter {
     public void setSpesialis(String Spesialis) {
         this.Spesialis = Spesialis;
     }
-
     public int getUmur() {
         return Umur;
     }
@@ -52,8 +51,6 @@ public class Dokter {
     }
     @Override
     public String toString() {
-        return "Dokter{" + "Id_Dokter = " + Id_Dokter + ", Nama = " + Nama + ", Spesialis = " + Spesialis + ", Umur = " + Umur + ", Alamat = " + Alamat + '}';
+        return "Dokter{" + "Id_Dokter = " + Id_Dokter + ", Nama = " + Nama + ", Spesialis = " + Spesialis + ", Umur = " + Umur +" tahun"+", Alamat = " + Alamat + '}';
     }
-    
-    
 }

@@ -11,7 +11,6 @@ public class ConnectionManager {
     private String url = "jdbc:mysql://localhost:3306/data_igd"; // myDB --&gt; nama database
     private String username = "root"; // user name DMBS
     private String password = ""; // pswd DMBS
-    
     public Connection logOn(){
         try {
                 //Load JDBC Driver

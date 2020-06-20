@@ -15,7 +15,7 @@ import Database.ConnectionManager;
  */
 public class ExecuteDok {
     public List<Dokter> getDok(){
-        List<Dokter> listPas = new ArrayList<>();
+        List<Dokter> listDok = new ArrayList<>();
         String query = "select * from dokter";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
@@ -24,18 +24,18 @@ public class ExecuteDok {
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()){
                 Dokter dok = new Dokter();
-                dok.setId_Dokter(rs.getString("Id_Pasien"));
+                dok.setId_Dokter(rs.getString("Id_Dokter"));
                 dok.setNama(rs.getString("Nama"));
                 dok.setSpesialis(rs.getString("Spesialis"));
                 dok.setUmur(rs.getInt("Umur"));
                 dok.setAlamat(rs.getString("Alamat"));
-                listPas.add(dok);
+                listDok.add(dok);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ExecutePsn.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
-        return listPas;
+        return listDok;
     }
     public int insertDok(Dokter dok){
         int hasil = 0;
@@ -67,7 +67,7 @@ public class ExecuteDok {
     }
     public int updateDok(Dokter newDok){
         int hasil = 0;
-        String query = "update dokter set Nama='"+newDok.getNama()+"',alamat='"+newDok.getAlamat() +"',spesialis='"+newDok.getSpesialis()+"', umur = "+ newDok.getUmur()+" where Id_Pasien ='"+newDok.getId_Dokter()+"'";
+        String query = "update dokter set Nama='"+newDok.getNama()+"',alamat='"+newDok.getAlamat() +"',spesialis='"+newDok.getSpesialis()+"', umur = "+ newDok.getUmur()+" where Id_Dokter ='"+newDok.getId_Dokter()+"'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
