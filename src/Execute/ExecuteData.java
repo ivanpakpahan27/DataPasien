@@ -2,16 +2,19 @@ package Execute;
 import java.util.List;
 import java.util.Scanner;
 import Entitas.Pasien;
+import Entitas.Dokter;
 /**
  *
  * @author Ivan Pakpahan
  */
-public class ExecutePasien {
+public class ExecuteData {
     private static boolean KELUAR = false;
     private static ExecutePsn execPsn;
+    private static ExecuteDok execDok;
     public static void main(String[] args) {
         execPsn = new ExecutePsn();
-        String Id_Pasien, Nama, Alamat;
+        execDok = new ExecuteDok();
+        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis;
         int Umur;
         while(!KELUAR){
             System.out.println("**********************************************");
@@ -19,14 +22,18 @@ public class ExecutePasien {
             System.out.println("*2. Input data pasien  ");
             System.out.println("*3. Ubah data pasien  ");
             System.out.println("*4. Hapus data pasien ");
-            System.out.println("*5. Keluar Aplikasi ");
+            System.out.println("*5. Tampil data dokter ");
+            System.out.println("*6. Input data dokter ");
+            System.out.println("*7. Ubah data dokter ");
+            System.out.println("*8. Hapus data dokter ");
+            System.out.println("*9. Keluar Aplikasi ");
             System.out.println("**********************************************");
             Scanner scanner = new Scanner(System.in);
             System.out.print("Masukkan pilihan Anda : ");
             int pilih = scanner.nextInt();
             switch(pilih){
                 case 1 :{
-                    System.out.println("Anda memilih Tampil Data ");
+                    System.out.println("Anda memilih Tampil Data Pasien ");
                     List<Pasien> listPas = execPsn.getPas();
                     System.out.println("===========================================");
                     for(Pasien pas : listPas){
@@ -81,6 +88,61 @@ public class ExecutePasien {
                     break;
                 }
                 case 5 :{
+                    System.out.println("Anda memilih Tampil Dokter ");
+                    List<Dokter> listDok = execDok.getDok();
+                    System.out.println("===========================================");
+                    for(Dokter dok : listDok){
+                        System.out.println(dok.toString());      
+                    }
+                    System.out.println("===========================================");
+                    break;
+                }
+                case 6 :{
+                    System.out.println("Anda memilih Input Data Dokter baru ");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Dokter    : ");
+                    Id_Dokter = scanner.nextLine();
+                    System.out.print("Masukkan Nama         : ");
+                    Nama = scanner.nextLine();
+                    System.out.print("Masukkan Spesialis    : ");
+                    Spesialis = scanner.nextLine();
+                    System.out.print("Masukkan Umur         : ");
+                    Umur = scanner.nextInt();
+                    System.out.print("Masukkan Alamat       : ");
+                    Alamat = scanner.nextLine();
+                    Dokter newDok = new Dokter(Id_Dokter, Nama,Spesialis,Umur,Alamat);
+                    int hasil = execDok.insertDok(newDok);
+                    System.out.println("Data tersimpan = " + hasil);
+                    break;
+                }
+                case 7 :{
+                    System.out.println("Anda memilih Ubah data Dokter");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Dokter yang akan diubah : ");
+                    Id_Dokter = scanner.nextLine();
+                    System.out.print("Masukkan nama baru                  : ");
+                    Nama = scanner.nextLine();
+                    System.out.print("Masukkan spesialis baru             : ");
+                    Spesialis = scanner.nextLine();
+                    System.out.print("Masukkan umur baru                  :");
+                    Umur = scanner.nextInt();
+                    System.out.print("Masukkan alamat baru                :");
+                    Alamat = scanner.nextLine();
+                    Dokter newDok = new Dokter(Id_Dokter, Nama, Spesialis, Umur,Alamat);
+                    int hasil = execDok.updateDok(newDok);
+                    System.out.println("Data diubah = "+ hasil);
+                    break;
+                }
+                 case 8 :{
+                    System.out.println("Anda memilih hapus data Dokter");
+                    scanner = new Scanner(System.in);
+                    System.out.println("Masukkan Id Dokter yang akan dihapus :");
+                    Id_Dokter = scanner.nextLine();
+                    int hasil = execDok.deleteDok(Id_Dokter);
+                    System.out.println("Data terhapus = "+ hasil);
+                    break;
+                }
+                case 9 :{
                     System.out.println("Anda berhasil log off dari Aplikasi!!!");
                     KELUAR = true;
                     break;
