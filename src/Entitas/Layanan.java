@@ -43,7 +43,5 @@ public class Layanan {
     @Override
     public String toString() {
         return "Layanan{" + "Id Pelayanan = " + Id_Layanan +"\t"+"\t"+", Id Admin = " + Id_Admin+"\t"+"\t"+ ", Id Pasien = " + Id_Pasien+"\t"+"\t" + ", Id Dokter = " + Id_Dokter + '}';
-    }
-    
-    
+    }    
 }

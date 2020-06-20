@@ -10,8 +10,7 @@ public class Pasien {
     private String Alamat;
     private String Status;
     public Pasien() {
-    }
-    
+    }    
     public Pasien(String Id_Pasien, String Nama, int Umur, String Alamat,String Status) {
         this.Id_Pasien = Id_Pasien;
         this.Nama = Nama;
@@ -19,7 +18,6 @@ public class Pasien {
         this.Alamat = Alamat;
         this.Status = Status;
     }
-
     public String getId_Pasien() {
         return Id_Pasien;
     }

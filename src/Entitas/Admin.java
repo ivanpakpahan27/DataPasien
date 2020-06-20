@@ -40,11 +40,8 @@ public class Admin {
     public void setAlamat(String Alamat) {
         this.Alamat = Alamat;
     }
-
     @Override
     public String toString() {
         return "Admin{" + "Id_Admin = " + Id_Admin+"\t"+"\t" + ", Nama = " + Nama+"\t"+"\t" + ", No_Hp = " + No_Hp+"\t"+"\t" + ", Alamat = " + Alamat + '}';
     }
-    
-    
 }
