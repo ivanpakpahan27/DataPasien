@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import Entitas.Pasien;
 import Entitas.Dokter;
+import Entitas.Admin;
 /**
  *
  * @author Ivan Pakpahan
@@ -11,10 +12,12 @@ public class ExecuteData {
     private static boolean KELUAR = false;
     private static ExecutePsn execPsn;
     private static ExecuteDok execDok;
+    private static ExecuteAdm execAdm;
     public static void main(String[] args) {
         execPsn = new ExecutePsn();
         execDok = new ExecuteDok();
-        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis,Status,Bantu;
+        execAdm = new ExecuteAdm();
+        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis,Status,Bantu,No_Hp,Id_Admin;
         int Umur;
         while(!KELUAR){
             System.out.println("**********************************************");
@@ -26,7 +29,11 @@ public class ExecuteData {
             System.out.println("*6. Input data dokter ");
             System.out.println("*7. Ubah data dokter ");
             System.out.println("*8. Hapus data dokter ");
-            System.out.println("*9. Keluar Aplikasi ");
+            System.out.println("*9. Tampil data admin ");
+            System.out.println("*10. Input data admin ");
+            System.out.println("*11. Ubah data admin ");
+            System.out.println("*12. Hapus data admin ");
+            System.out.println("*13. Keluar Aplikasi ");
             System.out.println("**********************************************");
             Scanner scanner = new Scanner(System.in);
             System.out.print("Masukkan pilihan Anda : ");
@@ -125,17 +132,17 @@ public class ExecuteData {
                 case 7 :{
                     System.out.println("Anda memilih Ubah data Dokter");
                     scanner = new Scanner(System.in);
-                    System.out.println("Masukkan Id Dokter yang akan diubah : ");
+                    System.out.print("Masukkan Id Dokter yang akan diubah : ");
                     Id_Dokter = scanner.nextLine();
-                    System.out.println("Masukkan nama baru                  : ");
+                    System.out.print("Masukkan nama baru                  : ");
                     Nama = scanner.nextLine();
-                    System.out.println("Masukkan spesialis baru             : ");
+                    System.out.print("Masukkan spesialis baru             : ");
                     Spesialis = scanner.nextLine();
-                    System.out.println("Masukkan umur baru                  :");
+                    System.out.print("Masukkan umur baru                  :");
                     Umur = scanner.nextInt();
                     System.out.print("");
                     Bantu = scanner.nextLine();
-                    System.out.println("Masukkan alamat baru                : ");
+                    System.out.print("Masukkan alamat baru                : ");
                     Alamat = scanner.nextLine();
                     Dokter newDok = new Dokter(Id_Dokter, Nama, Spesialis, Umur,Alamat);
                     int hasil = execDok.updateDok(newDok);
@@ -152,6 +159,58 @@ public class ExecuteData {
                     break;
                 }
                 case 9 :{
+                    System.out.println("Anda memilih Tampil Admin ");
+                    List<Admin> listAdm = execAdm.getAdm();
+                    System.out.println("===========================================");
+                    for(Admin adm : listAdm){
+                        System.out.println(adm.toString());      
+                    }
+                    System.out.println("===========================================");
+                    break;
+                }
+                case 10 :{
+                    System.out.println("Anda memilih Input Data Admin baru ");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Admin     : ");
+                    Id_Admin = scanner.nextLine();
+                    System.out.print("Masukkan Nama         : ");
+                    Nama = scanner.nextLine();
+                    System.out.print("Masukkan Nomor Hp     : ");
+                    No_Hp = scanner.nextLine();
+                    System.out.print("Masukkan Alamat       : ");
+                    Alamat = scanner.nextLine();
+                    System.out.println("============================================");
+                    Admin newAdm = new Admin(Id_Admin, Nama,No_Hp,Alamat);
+                    int hasil = execAdm.insertAdm(newAdm);
+                    System.out.println("Data tersimpan = " + hasil);
+                    break;
+                }
+                case 11 :{
+                    System.out.println("Anda memilih Ubah data Admin");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Admin  yang akan diubah : ");
+                    Id_Admin = scanner.nextLine();
+                    System.out.print("Masukkan nama baru                  : ");
+                    Nama = scanner.nextLine();
+                    System.out.print("Masukkan Nomor Hp baru              : ");
+                    No_Hp = scanner.nextLine();
+                    System.out.print("Masukkan alamat baru                : ");
+                    Alamat = scanner.nextLine();
+                    Admin newAdm = new Admin(Id_Admin, Nama, No_Hp,Alamat);
+                    int hasil = execAdm.updateAdm(newAdm);
+                    System.out.println("Data diubah = "+ hasil);
+                    break;
+                }
+                 case 12 :{
+                    System.out.println("Anda memilih hapus data Admin");
+                    scanner = new Scanner(System.in);
+                    System.out.println("Masukkan Id Admin yang akan dihapus :");
+                    Id_Admin = scanner.nextLine();
+                    int hasil = execAdm.deleteAdm(Id_Admin);
+                    System.out.println("Data terhapus = "+ hasil);
+                    break;
+                }
+                case 13 :{
                     System.out.println("Anda berhasil log off dari Aplikasi!!!");
                     KELUAR = true;
                     break;
