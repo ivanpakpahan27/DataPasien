@@ -51,6 +51,6 @@ public class Dokter {
     }
     @Override
     public String toString() {
-        return "Dokter{" + "Id_Dokter = " + Id_Dokter + ", Nama = " + Nama + ", Spesialis = " + Spesialis + ", Umur = " + Umur +" tahun"+", Alamat = " + Alamat + '}';
+        return "Dokter{" + "Id_Dokter = " + Id_Dokter+"\t"+"\t" + ", Nama = " + Nama+"\t"+"\t" + ", Spesialis = " + Spesialis+"\t"+"\t" + ", Umur = " + Umur +" tahun"+"\t"+"\t"+", Alamat = " + Alamat + '}';
     }
 }

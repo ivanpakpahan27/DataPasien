@@ -7,74 +7,73 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entitas.Dokter;
+import Entitas.Layanan;
 import Database.ConnectionManager;
 /**
  *
  * @author Ivan Pakpahan
  */
-public class ExecuteDok {
-    public List<Dokter> getDok(){
-        List<Dokter> listDok = new ArrayList<>();
-        String query = "select * from dokter";
+public class ExecuteLay {
+    public List<Layanan> getLay(){
+        List<Layanan> listLay = new ArrayList<>();
+        String query = "select * from layanan";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()){
-                Dokter dok = new Dokter();
-                dok.setId_Dokter(rs.getString("Id_Dokter"));
-                dok.setNama(rs.getString("Nama"));
-                dok.setSpesialis(rs.getString("Spesialis"));
-                dok.setUmur(rs.getInt("Umur"));
-                dok.setAlamat(rs.getString("Alamat"));
-                listDok.add(dok);
+                Layanan lay = new Layanan();
+                lay.setId_Layanan(rs.getString("Id_Layanan"));
+                lay.setId_Admin(rs.getString("Id_Admin"));
+                lay.setId_Pasien(rs.getString("Id_Pasien"));
+                lay.setId_Dokter(rs.getString("Id_Dokter"));
+                listLay.add(lay);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ExecuteDok.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
-        return listDok;
+        return listLay;
     }
-    public int insertDok(Dokter dok){
+    public int insertLay(Layanan lay){
         int hasil = 0;
-        String query = "Insert into dokter(Id_Dokter,Nama,Spesialis,Umur,Alamat)" + "value('"+ dok.getId_Dokter()+"','"+dok.getNama()+"','"+dok.getSpesialis()+"',"+dok.getUmur()+",'"+dok.getAlamat()+"')";
+        String query = "Insert into layanan(Id_Layanan,Id_Admin,Id_Pasien,Id_Dokter)" + "value('"+ lay.getId_Layanan()+"','"+lay.getId_Admin()+"','"+lay.getId_Pasien()+"','"+lay.getId_Dokter()+"')";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecuteDok.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteLay.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
     }
-    public int deleteDok(String delId_Dokter){
+    public int deleteLay(String delId_Layanan){
         int hasil = 0;
-        String query = "delete from dokter where Id_Dokter='"+ delId_Dokter+"'";
+        String query = "delete from layanan where Id_Layanan='"+ delId_Layanan+"'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecuteDok.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteLay.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
     }
-    public int updateDok(Dokter newDok){
+    public int updateLay(Layanan newLay){
         int hasil = 0;
-        String query = "update dokter set Nama='"+newDok.getNama()+"',alamat='"+newDok.getAlamat() +"',spesialis='"+newDok.getSpesialis()+"', umur = "+ newDok.getUmur()+" where Id_Dokter ='"+newDok.getId_Dokter()+"'";
+        String query = "update layanan set Id_Admin='"+newLay.getId_Admin()+"',Id_Pasien='"+newLay.getId_Pasien()+"',Id_Pasien='"+newLay.getId_Dokter()+" where Id_Layanan ='"+newLay.getId_Layanan()+"'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecuteDok.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteLay.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;

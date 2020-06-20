@@ -4,6 +4,7 @@ import java.util.Scanner;
 import Entitas.Pasien;
 import Entitas.Dokter;
 import Entitas.Admin;
+import Entitas.Layanan;
 /**
  *
  * @author Ivan Pakpahan
@@ -13,27 +14,36 @@ public class ExecuteData {
     private static ExecutePsn execPsn;
     private static ExecuteDok execDok;
     private static ExecuteAdm execAdm;
+    private static ExecuteLay execLay;
     public static void main(String[] args) {
         execPsn = new ExecutePsn();
         execDok = new ExecuteDok();
         execAdm = new ExecuteAdm();
-        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis,Status,Bantu,No_Hp,Id_Admin;
+        execLay = new ExecuteLay();
+        String Id_Pasien, Nama, Alamat,Id_Dokter,Spesialis,Status,Bantu,No_Hp,Id_Admin,Id_Layanan;
         int Umur;
         while(!KELUAR){
             System.out.println("**********************************************");
-            System.out.println("*1. Tampil data pasien  ");
-            System.out.println("*2. Input data pasien  ");
-            System.out.println("*3. Ubah data pasien  ");
-            System.out.println("*4. Hapus data pasien ");
-            System.out.println("*5. Tampil data dokter ");
-            System.out.println("*6. Input data dokter ");
-            System.out.println("*7. Ubah data dokter ");
-            System.out.println("*8. Hapus data dokter ");
-            System.out.println("*9. Tampil data admin ");
+            System.out.println("PENTING UNTUK MENAMPILKAN DATA TERLEBIH DAHULU");
+            System.out.println("-------UNTUK MENGECEK KETERSEDIAAN DATA-------");
+            System.out.println("-----------------------------------------------");
+            System.out.println("*1.  Tampil data pasien  ");
+            System.out.println("*2.  Input data pasien  ");
+            System.out.println("*3.  Ubah data pasien  ");
+            System.out.println("*4.  Hapus data pasien ");
+            System.out.println("*5.  Tampil data dokter ");
+            System.out.println("*6.  Input data dokter ");
+            System.out.println("*7.  Ubah data dokter ");
+            System.out.println("*8.  Hapus data dokter ");
+            System.out.println("*9.  Tampil data admin ");
             System.out.println("*10. Input data admin ");
             System.out.println("*11. Ubah data admin ");
             System.out.println("*12. Hapus data admin ");
-            System.out.println("*13. Keluar Aplikasi ");
+            System.out.println("*13. Tampil data layanan ");
+            System.out.println("*14. Input data layanan ");
+            System.out.println("*15. Ubah data layanan ");
+            System.out.println("*16. Hapus data layanan ");
+            System.out.println("*17. Keluar Aplikasi ");
             System.out.println("**********************************************");
             Scanner scanner = new Scanner(System.in);
             System.out.print("Masukkan pilihan Anda : ");
@@ -211,6 +221,58 @@ public class ExecuteData {
                     break;
                 }
                 case 13 :{
+                    System.out.println("Anda memilih Tampil Layanan ");
+                    List<Layanan> listLay = execLay.getLay();
+                    System.out.println("===========================================");
+                    for(Layanan lay : listLay){
+                        System.out.println(lay.toString());      
+                    }
+                    System.out.println("===========================================");
+                    break;
+                }
+                case 14 :{
+                    System.out.println("Anda memilih Input Data Layanan baru ");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Layanan     : ");
+                    Id_Layanan = scanner.nextLine();
+                    System.out.print("Masukkan Id Admin(anda) : ");
+                    Id_Admin = scanner.nextLine();
+                    System.out.print("Masukkan Id Pasien      : ");
+                    Id_Pasien = scanner.nextLine();
+                    System.out.print("Masukkan Id Dokter      : ");
+                    Id_Dokter = scanner.nextLine();
+                    System.out.println("============================================");
+                    Layanan newLay = new Layanan(Id_Layanan, Id_Admin,Id_Pasien,Id_Dokter);
+                    int hasil = execLay.insertLay(newLay);
+                    System.out.println("Data tersimpan = " + hasil);
+                    break;
+                }
+                case 15 :{
+                    System.out.println("Anda memilih Ubah data Layanan");
+                    scanner = new Scanner(System.in);
+                    System.out.print("Masukkan Id Layanan yang akan diubah : ");
+                    Id_Layanan = scanner.nextLine();
+                    System.out.print("Masukkan id admin baru               : ");
+                    Id_Admin = scanner.nextLine();
+                    System.out.print("Masukkan id pasien yang baru         : ");
+                    Id_Pasien = scanner.nextLine();
+                    System.out.print("Masukkan id dokter yang baru         : ");
+                    Id_Dokter = scanner.nextLine();
+                    Layanan newLay = new Layanan(Id_Layanan, Id_Admin, Id_Pasien,Id_Dokter);
+                    int hasil = execLay.updateLay(newLay);
+                    System.out.println("Data diubah = "+ hasil);
+                    break;
+                }
+                 case 16 :{
+                    System.out.println("Anda memilih hapus data Layanan");
+                    scanner = new Scanner(System.in);
+                    System.out.println("Masukkan Id Layanan yang akan dihapus :");
+                    Id_Layanan = scanner.nextLine();
+                    int hasil = execLay.deleteLay(Id_Layanan);
+                    System.out.println("Data terhapus = "+ hasil);
+                    break;
+                }
+                case 17 :{
                     System.out.println("Anda berhasil log off dari Aplikasi!!!");
                     KELUAR = true;
                     break;

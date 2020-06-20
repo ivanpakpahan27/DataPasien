@@ -31,7 +31,7 @@ public class ExecuteAdm {
                 listAdm.add(adm);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutePsn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteAdm.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return listAdm;
@@ -45,7 +45,7 @@ public class ExecuteAdm {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutePsn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteAdm.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
@@ -59,21 +59,21 @@ public class ExecuteAdm {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutePsn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteAdm.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
     }
     public int updateAdm(Admin newAdm){
         int hasil = 0;
-        String query = "update admin set Nama='"+newAdm.getNama()+"',alamat='"+newAdm.getAlamat() +"',No_Hp='"+newAdm.getNo_Hp()+" where Id_Pasien ='"+newAdm.getId_Admin()+"'";
+        String query = "update admin set Nama='"+newAdm.getNama()+"',alamat='"+newAdm.getAlamat() +"',No_Hp='"+newAdm.getNo_Hp()+" where Id_Admin ='"+newAdm.getId_Admin()+"'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(ExecutePsn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExecuteAdm.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;

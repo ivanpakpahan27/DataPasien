@@ -43,7 +43,7 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" + "Id_Admin = " + Id_Admin + ", Nama = " + Nama + ", No_Hp = " + No_Hp + ", Alamat = " + Alamat + '}';
+        return "Admin{" + "Id_Admin = " + Id_Admin+"\t"+"\t" + ", Nama = " + Nama+"\t"+"\t" + ", No_Hp = " + No_Hp+"\t"+"\t" + ", Alamat = " + Alamat + '}';
     }
     
     

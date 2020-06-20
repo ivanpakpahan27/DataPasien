@@ -52,6 +52,6 @@ public class Pasien {
     }
     @Override
     public String toString() {
-        return "Pasien{" + "Id_Pasien = " + Id_Pasien+"\t" + ",Nama = " + Nama +"\t"+ ", Umur = " + Umur + " tahun\t"+", Alamat = " + Alamat +"\t"+", Status = " + Status + '}';
+        return "Pasien{" + "Id_Pasien = " + Id_Pasien+"\t"+"\t" + ",Nama = " + Nama +"\t"+"\t"+ ", Umur = " + Umur + " tahun"+"\t"+"\t"+", Alamat = " + Alamat +"\t"+"\t"+", Status = " + Status + '}';
     }
 }
