@@ -30,7 +30,7 @@ public class ExecutePasien {
                     List<Pasien> listPas = execPsn.getPas();
                     System.out.println("===========================================");
                     for(Pasien pas : listPas){
-                        System.out.println(pas.toString());
+                        System.out.println(pas.toString());      
                     }
                     System.out.println("===========================================");
                     break;
@@ -81,7 +81,7 @@ public class ExecutePasien {
                     break;
                 }
                 case 5 :{
-                    System.out.println("Anda keluar Aplikasi!!!");
+                    System.out.println("Anda berhasil log off dari Aplikasi!!!");
                     KELUAR = true;
                     break;
                 }
