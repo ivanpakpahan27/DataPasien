@@ -29,6 +29,7 @@ public class ExecutePsn {
                 pas.setNama(rs.getString("Nama"));
                 pas.setUmur(rs.getInt("Umur"));// umur tipenya integer
                 pas.setAlamat(rs.getString("Alamat"));
+                pas.setStatus(rs.getString("Status"));
                 listPas.add(pas);
             }
         } catch (SQLException ex) {
@@ -39,7 +40,7 @@ public class ExecutePsn {
     }
     public int insertPas(Pasien pas){
         int hasil = 0;
-        String query = "Insert into pasien(Id_Pasien,Nama,Umur,Alamat)" + "value('"+ pas.getId_Pasien()+"','"+pas.getNama()+"',"+pas.getUmur()+",'"+pas.getAlamat()+"')";
+        String query = "Insert into pasien(Id_Pasien,Nama,Umur,Alamat,Status)" + "value('"+ pas.getId_Pasien()+"','"+pas.getNama()+"',"+pas.getUmur()+",'"+pas.getAlamat()+"','"+pas.getStatus()+"')";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -67,7 +68,7 @@ public class ExecutePsn {
     }
     public int updatePas(Pasien newPas){
         int hasil = 0;
-        String query = "update pasien set Nama='"+newPas.getNama()+"',alamat='"+newPas.getAlamat() +"', umur = "+ newPas.getUmur()+" where Id_Pasien ='"+newPas.getId_Pasien()+"'";
+        String query = "update pasien set Nama='"+newPas.getNama()+"',alamat='"+newPas.getAlamat() +"',status='"+newPas.getStatus()+"', umur = "+ newPas.getUmur()+" where Id_Pasien ='"+newPas.getId_Pasien()+"'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {

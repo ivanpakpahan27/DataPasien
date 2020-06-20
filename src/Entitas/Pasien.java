@@ -8,14 +8,16 @@ public class Pasien {
     private String Nama;
     private int Umur;
     private String Alamat;
+    private String Status;
     public Pasien() {
     }
     
-    public Pasien(String Id_Pasien, String Nama, int Umur, String Alamat) {
+    public Pasien(String Id_Pasien, String Nama, int Umur, String Alamat,String Status) {
         this.Id_Pasien = Id_Pasien;
         this.Nama = Nama;
         this.Umur = Umur;
         this.Alamat = Alamat;
+        this.Status = Status;
     }
 
     public String getId_Pasien() {
@@ -42,13 +44,14 @@ public class Pasien {
     public void setAlamat(String Alamat) {
         this.Alamat = Alamat;
     }
+    public String getStatus() {
+        return Status;
+    }
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
     @Override
     public String toString() {
-        return "Pasien{" + "Id_Pasien=" + Id_Pasien + ", Nama=" + Nama + ", Umur=" + Umur + ", Alamat=" + Alamat + '}';
+        return "Pasien{" + "Id_Pasien = " + Id_Pasien + ", Nama = " + Nama + ", Umur = " + Umur + "tahun"+", Alamat = " + Alamat + ", Status = " + Status + '}';
     }
-    
-    
-    
-    
-    
 }
