@@ -16,12 +16,54 @@
 CREATE DATABASE IF NOT EXISTS `data_igd` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `data_igd`;
 
+-- Dumping structure for table data_igd.admin
+CREATE TABLE IF NOT EXISTS `admin` (
+  `Id_Admin` int(5) NOT NULL AUTO_INCREMENT,
+  `Nama` varchar(30) NOT NULL,
+  `No_Hp` varchar(13) NOT NULL,
+  `Alamat` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id_Admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table data_igd.dokter
+CREATE TABLE IF NOT EXISTS `dokter` (
+  `Id_Dokter` int(5) NOT NULL AUTO_INCREMENT,
+  `Nama` varchar(30) NOT NULL,
+  `Spesialis` varchar(50) NOT NULL,
+  `Umur` int(2) NOT NULL,
+  `Alamat` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id_Dokter`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table data_igd.layanan
+CREATE TABLE IF NOT EXISTS `layanan` (
+  `Id_Layanan` int(5) NOT NULL AUTO_INCREMENT,
+  `Tanggal` date NOT NULL,
+  `Id_Admin` int(5) NOT NULL,
+  `Id_Pasien` int(5) NOT NULL,
+  `Id_Dokter` int(5) NOT NULL,
+  PRIMARY KEY (`Id_Layanan`),
+  KEY `FK_layanan_admin` (`Id_Admin`),
+  KEY `FK_layanan_pasien` (`Id_Pasien`),
+  KEY `FK_layanan_dokter` (`Id_Dokter`),
+  CONSTRAINT `FK_layanan_admin` FOREIGN KEY (`Id_Admin`) REFERENCES `admin` (`Id_Admin`),
+  CONSTRAINT `FK_layanan_dokter` FOREIGN KEY (`Id_Dokter`) REFERENCES `dokter` (`Id_Dokter`),
+  CONSTRAINT `FK_layanan_pasien` FOREIGN KEY (`Id_Pasien`) REFERENCES `pasien` (`Id_Pasien`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
 -- Dumping structure for table data_igd.pasien
 CREATE TABLE IF NOT EXISTS `pasien` (
   `Id_Pasien` int(5) NOT NULL AUTO_INCREMENT,
   `Nama` varchar(30) NOT NULL,
   `Umur` int(2) NOT NULL,
   `Alamat` varchar(50) NOT NULL,
+  `Status` varchar(20) NOT NULL,
   PRIMARY KEY (`Id_Pasien`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
